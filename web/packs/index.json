@@ -1,0 +1,6 @@
+{
+  "homeserver_url": "https://matrix.org",
+  "packs": [
+    "kyoudai.json"
+  ]
+}
