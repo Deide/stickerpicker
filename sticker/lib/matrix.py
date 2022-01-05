@@ -51,7 +51,7 @@ else:
 async def load_config(path: str) -> None:
     global access_token, homeserver_url, upload_url
     try:
-        with open(path) as config_file:
+        with open(path, encoding = "utf-8") as config_file:
             config = json.load(config_file)
             homeserver_url = config["homeserver"]
             access_token = config["access_token"]
@@ -63,7 +63,7 @@ async def load_config(path: str) -> None:
         if whoami_url.scheme not in ("https", "http"):
             whoami_url = whoami_url.with_scheme("https")
         user_id = await whoami(whoami_url, access_token)
-        with open(path, "w") as config_file:
+        with open(path, "w", encoding = "utf-8") as config_file:
             json.dump({
                 "homeserver": homeserver_url,
                 "user_id": user_id,
